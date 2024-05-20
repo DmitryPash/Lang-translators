@@ -8,21 +8,25 @@
   <body>
     <div class="container">
       <pre>
-        &:lang(al),
-        &:lang(am),
-        &:lang(en),
-        &:lang(ar),
-        &:lang(fr),
-        &:lang(ru),
-        &:lang(uz),
-        &:lang(fa) {
-          white-space: nowrap;
-        }
-      </з>
-
-      <input id="input" type="text" />
-      <button class="trans">trans</button>
-      <textarea class="output"></textarea>
+        <h3>Пример кода</h3>
+          &:lang(al),
+          &:lang(am),
+          &:lang(en),
+          &:lang(ar),
+          &:lang(fr),
+          &:lang(ru),
+          &:lang(uz),
+          &:lang(fa) {
+            white-space: nowrap;
+          }
+        </pre>
+      <input
+        id="input"
+        type="text"
+        placeholder="Вставте язык в как в коде. Пример ввода - &:lang(al), &:lang(am),"
+      />
+      <button class="trans">Нажать</button>
+      <textarea class="output" placeholder="Получите результат"></textarea>
     </div>
   </body>
   <script>
@@ -165,9 +169,11 @@
     input {
       width: 100%;
     }
-
     pre {
       width: 100%;
+    }
+    h3 {
+      margin-bottom: 4px;
     }
     .output {
       height: 300px;
