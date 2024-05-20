@@ -7,6 +7,19 @@
   </head>
   <body>
     <div class="container">
+      <pre>
+        &:lang(al),
+        &:lang(am),
+        &:lang(en),
+        &:lang(ar),
+        &:lang(fr),
+        &:lang(ru),
+        &:lang(uz),
+        &:lang(fa) {
+          white-space: nowrap;
+        }
+      </з>
+
       <input id="input" type="text" />
       <button class="trans">trans</button>
       <textarea class="output"></textarea>
@@ -150,6 +163,10 @@
       justify-content: center;
     }
     input {
+      width: 100%;
+    }
+
+    pre {
       width: 100%;
     }
     .output {
