@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <input id="input" type="text" />
+      <button class="trans">trans</button>
+      <textarea class="output"></textarea>
+    </div>
+  </body>
+
+  <script>
+    const alfabet = {
+      aa: "aa_ET",
+      al: "sq_AL",
+      am: "am_ET",
+      ar: "ar_AE",
+      au: "en_GB",
+      az: "az_AZ",
+      bg: "bg_BG",
+      bn: "bn_BD",
+      br: "pt_BR",
+      bs: "bs_BA",
+      by: "be_BY",
+      ca: "en_CA",
+      cn: "zh_CN",
+      cs: "cs_CZ",
+      da: "da_DK",
+      de: "de_DE",
+      el: "el_GR",
+      en: "en_GB",
+      gb: "en_GB",
+      es: "es_ES",
+      et: "et_EE",
+      fa: "fa_IR",
+      fi: "fi_FI",
+      fr: "fr_FR",
+      he: "he_IL",
+      hi: "hi_IN",
+      hk: "zh_HK",
+      hr: "hr_HR",
+      ht: "ht_HT",
+      hu: "hu_HU",
+      hy: "hy_AM",
+      id: "id_ID",
+      in: "en_IN",
+      iq: "ar_AE",
+      is: "is_IS",
+      it: "it_IT",
+      ja: "ja_JP",
+      ka: "ka_GE",
+      km: "km_KH",
+      ko: "ko_KR",
+      ku: "ku_TR",
+      kz: "kk_KZ",
+      ln: "ln_CD",
+      lo: "lo_LA",
+      lt: "lt_LT",
+      lv: "lv_LV",
+      mk: "mk_MK",
+      mn: "mn_MN",
+      ms: "ms_MY",
+      mx: "es_MX",
+      my: "my_MM",
+      nb: "nb_NO",
+      ne: "ne_NP",
+      nl: "nl_NL",
+      nz: "en_NZ",
+      pl: "pl_PL",
+      pt: "pt_PT",
+      ro: "ro_RO",
+      ru: "ru_RU",
+      sd: "sd_IN",
+      si: "si_LK",
+      sk: "sk_SK",
+      sl: "sl_SI",
+      sr: "sr_RS",
+      sv: "sv_SE",
+      sw: "sw_KE",
+      th: "th_TH",
+      tj: "tg_TJ",
+      tl: "tl_PH",
+      tr: "tr_TR",
+      tw: "zh_TW",
+      ua: "uk_UA",
+      ur: "ur_PK",
+      us: "en_GB",
+      uz: "uz_UZ",
+      vi: "vi_VN",
+      ir: "fa_IR",
+      zu: "zu_ZA",
+      kr: "ko_KR",
+      zh: "zh_CN",
+      tg: "tg_TJ",
+      uk: "uk_UA",
+      sq: "sq_AL",
+      so: "so_SO",
+      er: "aa_ER",
+      ta: "ta_LK",
+      pe: "es_PE",
+      co: "es_CO",
+      cl: "es_CL",
+    };
+    const input = document.querySelector("#input");
+    const btn = document.querySelector(".trans");
+    const output = document.querySelector(".output");
+
+    btn.addEventListener("click", () => {
+      transpiller(input.value);
+    });
+
+    function transpiller(value) {
+      let arrayOfValue = value.split(/;|,\s+/);
+      let outputArray = arrayOfValue.map((element) => {
+        for (const [key, translate] of Object.entries(alfabet))
+          if (element.indexOf(key) > 0) {
+            return element + `,&:lang(${translate})`;
+          }
+      });
+      output.innerHTML = outputArray;
+    }
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      max-width: 800px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    input {
+      width: 100%;
+    }
+    .output {
+      height: 300px;
+      width: 100%;
+    }
+    .trans {
+      margin: 20px 0px;
+    }
+  </style>
+</html>
