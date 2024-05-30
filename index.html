@@ -7,18 +7,29 @@
   </head>
   <body>
     <div class="container">
-      <pre>
-        <h3>Пример кода</h3>
-          &:lang(am),
-          &:lang(en),
-          &:lang(ar),
-          &:lang(fr),
-          &:lang(ru),
-          &:lang(uz),
-          &:lang(fa) {
-            white-space: nowrap;
-          }
-        </pre>
+        <div class="wrapper">
+            <pre>
+                <h3>Пример кода который вы вставляете</h3>
+                  &:lang(am),
+                  &:lang(en),
+                  &:lang(ar),
+                  &:lang(fr),
+                  &:lang(ru),
+                  &:lang(uz),
+                  &:lang(fa)
+                </pre>
+                <pre>
+                    <h3>То что получилось</h3>
+                    &:lang(am), &:lang(am_ET),
+                    &:lang(en), &:lang(en_GB),
+                    &:lang(ar), &:lang(ar_AE),
+                    &:lang(fr), &:lang(fr_FR),
+                    &:lang(ru), &:lang(ru_RU),
+                    &:lang(uz), &:lang(uz_UZ),
+                    &:lang(fa), &:lang(fa_IR)
+                </pre>
+        </div>
+
       <div class="wrapper">
         <textarea
           id="input"
@@ -170,6 +181,7 @@
       width: 100%;
     }
     h3 {
+    text-align: center;
       margin-bottom: 4px;
     }
     .container {
