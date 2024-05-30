@@ -147,10 +147,15 @@
       let outputArray = arrayOfValue.map((element) => {
         for (const [key, translate] of Object.entries(alfabet))
           if (element.indexOf(key) > 0) {
-            return element + `,&:lang(${translate})`;
+            return element + `,&:lang(${translate}),\n`;
           }
       });
-      output.innerHTML = outputArray;
+      let template = '';
+
+      outputArray.forEach((e) => {
+        template = template + e
+      })
+      output.innerHTML = template;
     }
   </script>
 
