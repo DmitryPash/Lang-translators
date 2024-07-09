@@ -139,7 +139,7 @@
     const output = document.querySelector(".output");
 
     btn.addEventListener("click", () => {
-      transpiller(input.value);
+      transpiller(input.value.toLowerCase());
     });
 
     function transpiller(value) {
