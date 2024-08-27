@@ -143,13 +143,17 @@
     });
 
     function transpiller(value) {
+      output.innerHTML = '';
+
       let arrayOfValue = value.split(/;|,\s+/);
-      let outputArray = arrayOfValue.map((element) => {
+
+      let outputArray = arrayOfValue.map((element, index) => {
         for (const [key, translate] of Object.entries(alfabet))
           if (element.indexOf(key) > 0) {
-            return element + `,&:lang(${translate}),\n`;
+            return index === arrayOfValue.length - 1 ? element + `,&:lang(${translate})` : element + `,&:lang(${translate}),\n`;
           }
       });
+
       let template = '';
 
       outputArray.forEach((e) => {
