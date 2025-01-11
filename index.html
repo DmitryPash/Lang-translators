@@ -36,7 +36,6 @@
             spellcheck="false"
           ></textarea>
         </div>
-        <button id="translate" class="translate__btn">Нажать</button>
         <div class="translate-field translate__field">
           <h2 class="translate-field__title">Результат выполнения:</h2>
           <textarea
@@ -47,6 +46,9 @@
             rows="10"
             spellcheck="false"
           ></textarea>
+          <div id="copy" class="translate-copy">
+            <span class="translate-copy__message"> Скопировано! </span>
+          </div>
         </div>
       </div>
       <div class="translate__footer">
@@ -202,11 +204,17 @@
       cl: "es_CL",
     };
     const input = document.querySelector("#input");
-    const btn = document.querySelector("#translate");
     const output = document.querySelector("#output");
+    const copy = document.querySelector("#copy");
 
-    btn.addEventListener("click", () => {
+    input.addEventListener("input", () => {
       transpiller(input.value.toLowerCase());
+    });
+    output.addEventListener("click", () => {
+      copy.classList.add("translate-copy--is-active");
+      setTimeout(() => copy.classList.remove("translate-copy--is-active"), 990);
+
+      navigator.clipboard.writeText(output.value);
     });
 
     function transpiller(value) {
@@ -268,6 +276,7 @@
     }
 
     .translate {
+      position: relative;
       margin: 2rem auto;
       padding: 2rem 3rem 3rem;
       width: 80%;
@@ -286,40 +295,6 @@
       margin-bottom: 2.65rem;
       padding: 1rem 0;
       border-bottom: 3px solid #eee;
-    }
-
-    .translate__btn {
-      align-items: center;
-      align-self: center;
-
-      appearance: none;
-      background-color: #fcfcfd;
-      border-radius: 4px;
-      border-width: 0;
-      box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
-        rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
-      box-sizing: border-box;
-      color: #36395a;
-      cursor: pointer;
-      display: inline-flex;
-      font-family: "JetBrains Mono", monospace;
-      height: 48px;
-      justify-content: center;
-      line-height: 1;
-      list-style: none;
-      overflow: hidden;
-      padding-left: 16px;
-      padding-right: 16px;
-      position: relative;
-      text-align: left;
-      text-decoration: none;
-      transition: box-shadow 0.15s, transform 0.15s;
-      user-select: none;
-      -webkit-user-select: none;
-      touch-action: manipulation;
-      white-space: nowrap;
-      will-change: box-shadow, transform;
-      font-size: 18px;
     }
 
     .translate__btn:focus {
@@ -347,6 +322,7 @@
       column-gap: 60px;
     }
     .translate-field {
+      position: relative;
       flex: 1 0 auto;
     }
     .translate-field__input {
@@ -392,6 +368,35 @@
       border-top: 3px solid #eee;
       display: flex;
       justify-content: space-between;
+    }
+
+    .translate-copy {
+      position: absolute;
+      transform: translateX(-50%);
+      left: 50%;
+      top: calc(100% - 20px);
+      padding: 15px 25px;
+      background-color: #ff9e9e;
+      border-radius: 8px;
+      color: #fff;
+      opacity: 0;
+      /* animation: copy-fade 0.5; */
+
+      /* transition: opacity 0.5s ease-in; */
+    }
+
+    .translate-copy--is-active {
+      opacity: 1;
+      animation: 1s copy-fade;
+    }
+
+    @keyframes copy-fade {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
     }
 
     /* Новогоднее настроение */
